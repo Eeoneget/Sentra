@@ -131,7 +131,7 @@ export const Hero = () => {
             <iframe 
               width="100%" 
               height="100%" 
-              src="../../public/shoplifting.mp4" 
+              src="/shoplifting.mp4" 
               title="Technology Abstract Background Video" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
