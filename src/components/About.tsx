@@ -28,7 +28,7 @@ export const About = () => {
                         <div className="relative z-10 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-3xl p-3 border border-slate-700 shadow-2xl overflow-hidden">
                             <div className="aspect-square relative overflow-hidden rounded-[28px]">
                                 <img
-                                    src="/vor.png"
+                                    src="../../public/logo-full.jpg"
                                     alt="Masked intruder in a retail environment"
                                     className="absolute inset-0 h-full w-full object-cover"
                                     loading="lazy"
