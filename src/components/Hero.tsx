@@ -1,11 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Play, ShieldCheck, Clock, Store, X } from "lucide-react";
+import { ShieldCheck, Clock, Store, X } from "lucide-react";
+import animation from "../animations/video-animation.json";
+import Lottie from "lottie-react";
 
 export const Hero = () => {
+    const lottieRef = useRef<any>(null);
+
     const heroRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+    const handleMouseEnter = () => {
+        if (lottieRef.current) {
+            lottieRef.current.setDirection(1); // вперед
+            lottieRef.current.play();
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (lottieRef.current) {
+            lottieRef.current.setDirection(-1); // назад
+            lottieRef.current.play();
+        }
+    };
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -47,10 +65,26 @@ export const Hero = () => {
                             Book Demo
                         </button>
                         <button
+                            className="bg-white hover:bg-slate-50 text-black border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify gap-2"
                             onClick={() => setIsVideoOpen(true)}
-                            className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center gap-2"
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
                         >
-                            <Play size={20} className="text-primary" />
+                            <Lottie
+                                lottieRef={lottieRef}
+                                animationData={animation}
+                                loop={false}
+                                autoplay={false}
+                                style={{
+                                    width: 30, // реальный контейнер под Lottie
+                                    height: 20,
+                                    transform: "scale(2)", // увеличиваем анимацию в 2 раза
+                                    transformOrigin: "center", // центрируем масштабирование
+                                }}
+                                rendererSettings={{
+                                    preserveAspectRatio: "xMidYMid slice",
+                                }}
+                            />
                             Watch Demo
                         </button>
                     </div>
